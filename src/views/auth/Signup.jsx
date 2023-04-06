@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import authService from '../../services/authService';
+import GenderSelect from '../../components/Forms/GenderSelect';
 
 export default function Signup() {
   const [user, setUser] = useState({
-    username: '',
+    name: '',
+    surname: '',
+    gender: '',
     email: ''
   })
   const [password, setPassword] = useState('');
@@ -32,7 +35,7 @@ export default function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await authService.signup({ username: user.username, email: user.email, password });
+      await authService.signup({ name: user.name, surname: user.surname, gender: user.gender, email: user.email, password });
       navigate('/login');
     } catch (error) {
       console.error(error)
@@ -43,8 +46,11 @@ export default function Signup() {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <label>Username</label>
-        <input required type="text" name="username" value={user.username} onChange={handleChange} />
+        <label>First Name</label>
+        <input required type="text" name="name" value={user.name} onChange={handleChange} />
+        <label>Last Name</label>
+        <input require d type="text" name="surname" value={user.surname} onChange={handleChange} />
+        <GenderSelect onChange={handleChange}/>
         <label>Email</label>
         <input required type="email" name="email" value={user.email} onChange={handleChange} />
         <label>Password</label>
@@ -52,7 +58,7 @@ export default function Signup() {
         <label>Repeat the password</label>
         <input required type="password" name="passwordControl" value={passwordControl} onChange={(e) => setPasswordControl(e.target.value)} />
         {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
-        <button type="submit">Register</button>
+        <button type="submit">Create account</button>
       </form>
     </div>
   )
