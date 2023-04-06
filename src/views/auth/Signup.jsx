@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import authService from '../../services/authService';
-import GenderSelect from '../../components/Forms/GenderSelect';
+import GenderSelect from '../../components/inputs/GenderSelect';
 
 export default function Signup() {
   const [user, setUser] = useState({

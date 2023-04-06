@@ -1,0 +1,16 @@
+.money-container {
+  position: relative;
+  display: inline-block;
+  height:40px;
+}
+
+.money-count {
+  position: absolute;
+  font-size:1rem;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.7); /* Optional background color for the number, you can adjust the opacity as needed */
+  padding: 2px 4px; /* Adjust padding for the number container */
+  border-radius: 4px; /* Optional border-radius for the number container */
+  font-weight: bold;
+}
