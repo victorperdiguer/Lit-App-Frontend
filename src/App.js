@@ -4,24 +4,32 @@ import { Toaster } from 'react-hot-toast';
 import Home from './views/Home';
 import Navbar from './components/Navbar';
 import UpperNavbar from './components/layout/UpperNavbar';
+import BottomNavbar from './components/layout/BottomNavbar';
 import ErrorPage from './views/ErrorPage';
 import NotFound from './views/NotFound';
 import Signup from './views/auth/Signup';
 import Login from './views/auth/Login';
-import PrivateView from './views/PrivateView';
+//main views
+import MainCircle from './views/circles/MainCircle';
+import MainQuestions from './views/questions/MainQuestions';
+import MainProfile from './views/profile/MainProfile';
+import MainNotifications from './views/notifications/MainNotifications';
+import MainStore from './views/store/MainStore';
 import IsPrivate from './components/IsPrivate';
 
 function App() {
   return (
     <div className="App">
       <Toaster/>
-      <Navbar />
-      <UpperNavbar></UpperNavbar>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/private" element={<IsPrivate><PrivateView /></IsPrivate>} />
+        <Route path="/questions" element={<IsPrivate><MainQuestions /></IsPrivate>} />
+        <Route path="/circles" element={<IsPrivate><MainCircle /></IsPrivate>} />
+        <Route path="/profile" element={<IsPrivate><MainProfile /></IsPrivate>} />
+        <Route path="/notifications" element={<IsPrivate><MainNotifications /></IsPrivate>} />
+        <Route path="/store" element={<IsPrivate><MainStore /></IsPrivate>} />
         <Route path="/error" element={<ErrorPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

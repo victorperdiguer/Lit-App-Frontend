@@ -1,20 +1,21 @@
 import React from "react"
-import {IoFlameSharp} from 'react-icons/io'
+import {FaFireAlt} from 'react-icons/fa'
 import {CgProfile} from 'react-icons/cg';
 import {GiLinkedRings} from 'react-icons/gi';
+import { NavLink } from "react-router-dom";
 
 
 const BottomNavbar = (props) => {
   return (
-    <nav className="bottom-navbar">
+    <nav className="bottom-navbar navbar">
       <div className="bottom-navbar-circles-div">
-        <h1><GiLinkedRings/></h1>
+        <NavLink to="/circles"><GiLinkedRings className="navbar-icon"/></NavLink>
       </div>
       <div className="bottom-navbar-questions-div">
-        <h1><IoFlameSharp/></h1>
+        <NavLink to="/questions"><FaFireAlt className="navbar-icon"/></NavLink>
       </div>
       <div className="bottom-navbar-profile-div">
-        <h3><CgProfile/></h3>
+        <NavLink to="/profile"><CgProfile className="navbar-icon"/></NavLink>
       </div>
     </nav> 
   )

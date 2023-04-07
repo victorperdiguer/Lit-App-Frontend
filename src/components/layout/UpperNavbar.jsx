@@ -1,18 +1,18 @@
-import './UpperNavbar.css';
 import React from "react";
-import {AiOutlineInbox} from 'react-icons/ai';
+import {RiInboxFill} from 'react-icons/ri';
 import Money from "../visual/Money";
+import { NavLink } from "react-router-dom";
 
 const UpperNavbar = (props) => {
   return (
-    <nav className="upper-navbar">
+    <nav className="upper-navbar navbar">
       <div className="upper-navbar-notification-div">
-        <AiOutlineInbox className="navbar-icon"/>
+        <NavLink to="/notifications"><RiInboxFill className="navbar-icon"/></NavLink>
       </div>
       <div className="upper-navbar-title-div">
         <h1 className="navbar-icon">Lit</h1>
       </div>
-        <h1><Money gems={42}/></h1>
+        <NavLink to="/store"><Money gems={42}/></NavLink>
     </nav> 
   )
 };
