@@ -5,7 +5,7 @@ const MainQuestions = (props) => {
   return (
     <Layout>
       <h1>questions main</h1>
-     </Layout>
+    </Layout>
   )
 };
 

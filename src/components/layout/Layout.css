@@ -7,12 +7,18 @@
   flex-direction:row;
   justify-content: center;
   gap:25vw;
+  background-color: #FFF9A5;
 }
 
 .upper-navbar {
   top: 0;
   border-bottom: 2px solid black;
   padding:15px 25px 5px 25px;
+}
+
+.upper-navbar-title-div > h1 {
+  font-family: "Futura Round Demi Italic";
+  color:white;
 }
 
 .bottom-navbar {
