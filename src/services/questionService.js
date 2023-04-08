@@ -27,4 +27,4 @@ class QuestionService {
 }
 
 const questionService = new QuestionService();
-export default QuestionService;
+export default questionService;
