@@ -10,7 +10,6 @@ const UpperNavbar = (props) => {
 
   useEffect(() => {
     setPath(location.pathname);
-    console.log(location);
   }, [location]);
 
   return (
