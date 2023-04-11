@@ -4,7 +4,14 @@ class UserAnswerService {
   constructor () {
     this.api = axios.create({
       baseURL: `${process.env.REACT_APP_BACKEND_URL}/answer`
-    })
+    });
+    this.api.interceptors.request.use(config => {
+      const storedToken = localStorage.getItem('authToken');
+      if (storedToken) {
+        config.headers = { Authorization: `Bearer ${storedToken}` };
+      }
+      return config;
+    });
   }
   getMyAnswers(myId) {
     return this.api.get(`/me/${myId}`).then(({data}) => data).catch(error => console.error(error));

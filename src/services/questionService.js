@@ -5,6 +5,13 @@ class QuestionService {
     this.api = axios.create({
       baseURL: `${process.env.REACT_APP_BACKEND_URL}/question`
     })
+    this.api.interceptors.request.use(config => {
+      const storedToken = localStorage.getItem('authToken');
+      if (storedToken) {
+        config.headers = { Authorization: `Bearer ${storedToken}` };
+      }
+      return config;
+    });    
   }
   getRandom() {
     return this.api.get('/single/random').then(({data}) => data).catch(error => console.error(error));
