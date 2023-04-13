@@ -5,7 +5,7 @@ class AuthService {
     this.api = axios.create({
       baseURL: `${process.env.REACT_APP_BACKEND_URL}/auth`
     });
-
+    
     this.api.interceptors.request.use(config => {
       const storedToken = localStorage.getItem('authToken');
       if (storedToken) {

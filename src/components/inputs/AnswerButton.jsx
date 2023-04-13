@@ -1,11 +1,12 @@
 import React from "react"
 
-const AnswerButton = (props) => {
-  const {answerName, answerSurname, answerGender} = props;
+const AnswerButton = ({name, surname, gender, value, onClick}) => {
   return (
-    <button className="answer-button" >
-      {answerName} {answerSurname}
-    </button>
+    <div className="answer-button-container">
+      <button value={value} onClick={onClick} className={`answer-button ${gender}`}>
+        {name} {surname}
+      </button>
+    </div>
   )
 };
 

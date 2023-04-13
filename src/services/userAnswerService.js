@@ -17,7 +17,7 @@ class UserAnswerService {
     return this.api.get(`/me/${myId}`).then(({data}) => data).catch(error => console.error(error));
   }
   postAnswer(questionId, body) {
-    return this.api.post(`/create/${questionId}`, body).then(({data}) => data).catch(error => console.error(error));
+    return this.api.post(`/create/${questionId}`, body).then(({data}) => data);
   }
   skipAnswer() {
     return this.api.post(`/skip`).then(({data}) => data).catch(error => console.error(error));
