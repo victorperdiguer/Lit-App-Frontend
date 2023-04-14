@@ -7,6 +7,7 @@ import AnswerButton from "../../components/inputs/AnswerButton";
 import questionService from "../../services/questionService";
 import userAnswerService from "../../services/userAnswerService";
 import userService from "../../services/userService";
+import toast from 'react-hot-toast';
 
 const MainQuestions = (props) => {
   const [dailyQuestionsAnswered, setDailyQuestionsAnswered] = useState(null);
@@ -31,20 +32,30 @@ const MainQuestions = (props) => {
 
   const handleSkip = async (e) => {
     try {
-      await userAnswerService.skipAnswer();
+      const response = await userService.getMe();
+      if (response.money < 10) {
+        toast.error("You need 10 gems for that!");
+      } else {
+        await userAnswerService.skipAnswer();
+        handleDailyQuestionsAnswered();
+      }
     } catch (error) {
       console.error(error);
     }
-    handleDailyQuestionsAnswered();
   }
 
   const handleShuffle = async (e) => {
     try {
-      await userAnswerService.shuffleAnswer();
+      const response = await userService.getMe();
+      if (response.money < 5) {
+        toast.error("You need 5 gems for that!");
+      } else {
+        await userAnswerService.shuffleAnswer();
+        getQuestion();
+      }
     } catch (error) {
       console.error(error);
     }
-    getQuestion();
   }
 
   const getQuestion = async () => {
@@ -61,7 +72,6 @@ const MainQuestions = (props) => {
   const getDailyQuestionsAnswered = async () => {
     try {
       const response = await userService.getMe();
-      console.log(response);
       setDailyQuestionsAnswered(response.dailyQuestionsAnswered);
     } catch (error) {
       console.error(error);
