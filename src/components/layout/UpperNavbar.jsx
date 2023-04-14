@@ -3,8 +3,9 @@ import {RiInboxFill, RiInboxLine} from 'react-icons/ri';
 import Money from "../visual/Money";
 import { useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
+import userService from "../../services/userService";
 
-const UpperNavbar = (props) => {
+const UpperNavbar = ({gems}) => {
   const [path, setPath] = useState('/');
   const location = useLocation();
 
@@ -23,7 +24,7 @@ const UpperNavbar = (props) => {
         <h1 className="navbar-icon">Lit</h1>
       </div>
         <NavLink to="/store">
-          {path === "/store" ? (<Money gems={42} isActive={true}/>) : (<Money gems={42} isActive={false}/>)}
+          {path === "/store" ? (<Money gems={gems} isActive={true}/>) : (<Money gems={gems} isActive={false}/>)}
         </NavLink>
     </nav> 
   )

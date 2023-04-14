@@ -13,6 +13,7 @@ const MainQuestions = (props) => {
   const [dailyQuestionsAnswered, setDailyQuestionsAnswered] = useState(null);
   const [question, setQuestion] = useState(null);
   const [answers, setAnswers] = useState([]);
+  const [gems, setGems] = useState(null);
 
   const handleDailyQuestionsAnswered = () => {
     getDailyQuestionsAnswered();
@@ -60,6 +61,8 @@ const MainQuestions = (props) => {
 
   const getQuestion = async () => {
     try {
+      const userResponse = await userService.getMe();
+      setGems(userResponse.money);
       const questionResponse = await questionService.getRandom();
       setQuestion(questionResponse);
       const answerResponse = await questionService.getAnswerOptionsSimple(questionResponse[0]._id);
@@ -84,7 +87,7 @@ const MainQuestions = (props) => {
   }, [])
 
   return (
-    <Layout>
+    <Layout gems={gems}>
       <h1>questions main</h1>
       <h3 className="daily-questions">{dailyQuestionsAnswered}/10</h3>
       <h2 className="question">{question ? question[0].question : null}</h2>
@@ -99,8 +102,8 @@ const MainQuestions = (props) => {
           />
       ))}
       <div className="extra-button-container">
-          <button value="skip" type="submit" className="shuffle-button extra-answer-button" onClick={handleSkip}><RiShuffleFill/></button>
-          <button value="shuffle" type="submit" className="skip-button extra-answer-button" onClick={handleShuffle}><RiSkipForwardFill/></button>
+          <button value="shuffle" type="submit" className="shuffle-button extra-answer-button" onClick={handleShuffle}><RiShuffleFill/></button>
+          <button value="skip" type="submit" className="skip-button extra-answer-button" onClick={handleSkip}><RiSkipForwardFill/></button>
       </div>
     </Layout>
   )

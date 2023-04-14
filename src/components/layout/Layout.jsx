@@ -3,10 +3,10 @@ import React from 'react';
 import UpperNavbar from './UpperNavbar';
 import BottomNavbar from './BottomNavbar';
 
-const Layout = ({ children }) => {
+const Layout = ({ gems, children }) => {
   return (
     <div className="layout-container">
-      <UpperNavbar/>
+      <UpperNavbar gems={gems}/>
       <main className="layout-content">{children}</main>
       <BottomNavbar/>
     </div>
