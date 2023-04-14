@@ -13,11 +13,17 @@ class UserAnswerService {
       return config;
     });
   }
-  getMyAnswers(myId) {
-    return this.api.get(`/me/${myId}`).then(({data}) => data).catch(error => console.error(error));
+  getMyAnswers() {
+    return this.api.get(`/me`).then(({data}) => data).catch(error => console.error(error));
+  }
+  getLastAnswer() {
+    return this.api.get('/last').then(({data}) => data).catch(error => console.error(error));
+  }
+  getTodaysAnswers() {
+    return this.api.get('/today').then(({data}) => data).catch(error => console.error(error));
   }
   postAnswer(questionId, body) {
-    return this.api.post(`/create/${questionId}`, body).then(({data}) => data);
+    return this.api.post(`/create/${questionId}`, body).then(({data}) => data).catch(error => console.error(error));
   }
   skipAnswer() {
     return this.api.post(`/skip`).then(({data}) => data).catch(error => console.error(error));

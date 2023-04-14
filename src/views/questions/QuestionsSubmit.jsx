@@ -6,7 +6,7 @@ import questionService from "../../services/questionService";
 import userService from "../../services/userService";
 import toast from 'react-hot-toast';
 
-const MainQuestions = (props) => {
+const QuestionsSubmit = (props) => {
   const [gems, setGems] = useState(null);
   const handleGems = async () => {
     try {
@@ -16,7 +16,7 @@ const MainQuestions = (props) => {
       console.error(error);
     }
   }
-  
+
   return (
     <Layout gems={gems}>
 
@@ -24,4 +24,4 @@ const MainQuestions = (props) => {
   )
 };
 
-export default MainQuestions;
+export default QuestionsSubmit;

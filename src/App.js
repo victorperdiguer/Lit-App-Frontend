@@ -11,6 +11,7 @@ import Signup from './views/auth/Signup';
 import Login from './views/auth/Login';
 //main views
 import MainCircle from './views/circles/MainCircle';
+import DailyQuestionsCheck from './components/DailyQuestionsCheck';
 import MainQuestions from './views/questions/MainQuestions';
 import MainProfile from './views/profile/MainProfile';
 import MainNotifications from './views/notifications/MainNotifications';
@@ -25,7 +26,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/questions" element={<IsPrivate><MainQuestions /></IsPrivate>} />
+        <Route path="/questions" element={<IsPrivate><DailyQuestionsCheck /></IsPrivate>} />
         <Route path="/circles" element={<IsPrivate><MainCircle /></IsPrivate>} />
         <Route path="/profile" element={<IsPrivate><MainProfile /></IsPrivate>} />
         <Route path="/notifications" element={<IsPrivate><MainNotifications /></IsPrivate>} />
