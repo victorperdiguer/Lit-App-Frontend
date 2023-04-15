@@ -78,7 +78,7 @@ const MainProfile = (props) => {
 
   return (
     <Layout gems={gems} notifications={notifications}>
-      <div className="user-profile">
+      {user && <div className="user-profile">
         <h1>Profile</h1>
         <form onSubmit={handleSubmit}>
           <label>
@@ -161,7 +161,7 @@ const MainProfile = (props) => {
             <input
               type="date"
               name="dateOfBirth"
-              value={formData.dateOfBirth}
+              value={formData.dateOfBirth || ""} // use an empty string if dateOfBirth is null
               onChange={handleInputChange}
             />
           </label>
@@ -176,7 +176,7 @@ const MainProfile = (props) => {
           </label>
           <button type="submit">Save Changes</button>
         </form>
-      </div>
+      </div>}
     </Layout>
   );
 };
