@@ -16,8 +16,8 @@ class UserService {
   getMe() {
     return this.api.get('/').then(({data}) => data).catch(error => console.error(error));
   }
-  editMyProfile(body) {
-    return this.api.patch('/edit', body).then(({data}) => data).catch(error => console.error(error));
+  updateUser(body) {
+    return this.api.patch('/edit', body).then(({data}) => data).catch(error => ({error}));
   }
 }
 

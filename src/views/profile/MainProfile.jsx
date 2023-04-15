@@ -3,13 +3,13 @@ import { useState, useEffect } from "react";
 import Layout from "../../components/layout/Layout";
 import userService from "../../services/userService";
 import notificationService from "../../services/notificationService";
+import toast from 'react-hot-toast';
 
 
 const MainProfile = (props) => {
   const [formData, setFormData] = useState({
     name: "",
     surname: "",
-    email: "",
     phone: "",
     gender: "",
     instagram: "",
@@ -40,7 +40,6 @@ const MainProfile = (props) => {
       setFormData({
         name: userResponse.name,
         surname: userResponse.surname,
-        email: userResponse.email,
         phone: userResponse.phone,
         gender: userResponse.gender,
         instagram: userResponse.instagram,
@@ -58,9 +57,14 @@ const MainProfile = (props) => {
     event.preventDefault();
     // Update the user using the API
     try {
-      await userService.updateUser(formData);
-      // Update the user state
-      setUser({ ...user, ...formData });
+      const response = await userService.updateUser(formData);
+      if (response.message !== 'success') {
+        console.log(response);
+        toast.error(`${response.error.response.data.message}`)
+      } else {
+        setUser({ ...user, ...formData });
+        toast.success('Profile updated successfully!');
+      }
     } catch (error) {
       console.error(error);
     }
@@ -100,35 +104,51 @@ const MainProfile = (props) => {
             />
           </label>
           <label>
-            Email:
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleInputChange}
-            />
-          </label>
-          <label>
             Phone:
             <input
               type="text"
               name="phone"
               value={formData.phone}
               onChange={handleInputChange}
+              pattern="^\+[0-9]+$"
+              title="Phone can only contain numbers and must be preceeded by a + sign"
             />
           </label>
           <label>
-            Gender:
-            <select
-              name="gender"
-              value={formData.gender}
-              onChange={handleInputChange}
-            >
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-              <option value="other">Other</option>
-            </select>
-          </label>
+          Gender:
+          <div>
+            <label>
+              <input
+                type="radio"
+                name="gender"
+                value="male"
+                checked={formData.gender === "male"}
+                onChange={handleInputChange}
+              />
+              Male
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="gender"
+                value="female"
+                checked={formData.gender === "female"}
+                onChange={handleInputChange}
+              />
+              Female
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="gender"
+                value="other"
+                checked={formData.gender === "other"}
+                onChange={handleInputChange}
+              />
+              Other
+            </label>
+          </div>
+        </label>
           <label>
             Instagram:
             <input
