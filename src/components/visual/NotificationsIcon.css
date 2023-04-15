@@ -1,0 +1,20 @@
+.notification-container {
+  position: relative;
+  display: inline-block;
+  height:40px;
+}
+
+.new-notification {
+  position: absolute;
+  width: 2px;
+  height: 4px;
+  border-radius:100%;
+  font-size:1rem;
+  top: 0;
+  right: 0;
+  margin-left:-10px;
+  background-color: red; /* Optional background color for the number, you can adjust the opacity as needed */
+  padding: 2px 4px; /* Adjust padding for the number container */
+  border-radius: 4px; /* Optional border-radius for the number container */
+  font-weight: bold;
+}

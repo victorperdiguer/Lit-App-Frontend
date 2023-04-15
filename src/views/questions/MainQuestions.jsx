@@ -7,6 +7,7 @@ import AnswerButton from "../../components/inputs/AnswerButton";
 import questionService from "../../services/questionService";
 import userAnswerService from "../../services/userAnswerService";
 import userService from "../../services/userService";
+import notificationService from "../../services/notificationService";
 import toast from 'react-hot-toast';
 
 const MainQuestions = (props) => {
@@ -14,9 +15,20 @@ const MainQuestions = (props) => {
   const [question, setQuestion] = useState(null);
   const [answers, setAnswers] = useState([]);
   const [gems, setGems] = useState(null);
+  const [notifications, setNotifications] = useState(null);
+
+  const getNotifications = async () => {
+    try {
+      const response = notificationService.getNew();
+      response.length !== 0 ? setNotifications(true) : setNotifications(false);
+    } catch (error) {
+      console.error(error)
+    }
+  }
 
   const handleDailyQuestionsAnswered = () => {
     getDailyQuestionsAnswered();
+    getNotifications();
     getQuestion();
   }
 
@@ -84,10 +96,11 @@ const MainQuestions = (props) => {
   useEffect(() => {
     getQuestion();
     getDailyQuestionsAnswered();
+    getNotifications();
   }, [])
 
   return (
-    <Layout gems={gems}>
+    <Layout gems={gems} notifications={notifications}>
       <h1>questions main</h1>
       <h3 className="daily-questions">{dailyQuestionsAnswered}/10</h3>
       <h2 className="question">{question ? question[0].question : null}</h2>

@@ -2,14 +2,25 @@ import React from "react";
 import Layout from "../../components/layout/Layout";
 import { useEffect, useState } from "react";
 import userService from "../../services/userService";
+import notificationService from "../../services/notificationService";
 import StoreOption from "../../components/visual/StoreOptions";
 import toast from "react-hot-toast";
 
 const MainStore = () => {
   const [gems, setGems] = useState(null);
+  const [notifications, setNotifications] = useState(null);
   const [gender, setGender] = useState(null);
 
-  const handleGems = async () => {
+  const getNotifications = async () => {
+    try {
+      const response = notificationService.getNew();
+      response.length !== 0 ? setNotifications(true) : setNotifications(false);
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  const getGems = async () => {
     try {
       const userResponse = await userService.getMe();
       setGems(userResponse.money);
@@ -18,7 +29,7 @@ const MainStore = () => {
     }
   }
 
-  const handleGender = async () => {
+  const getGender = async () => {
     try {
       const userResponse = await userService.getMe();
       setGender(userResponse.gender);
@@ -28,8 +39,9 @@ const MainStore = () => {
   }
 
   useEffect(() => {
-    handleGems();
-    handleGender();
+    getGems();
+    getGender();
+    getNotifications();
   }, [])
 
   const handlePayment = () => {
@@ -39,7 +51,7 @@ const MainStore = () => {
   }
 
   return (
-    <Layout gems={gems}>
+    <Layout gems={gems} notifications={notifications}>
       <h1>main store</h1>
       <div className="store">
         <StoreOption amount={50} price={"3.99 €"} size="small" onClick={handlePayment}>Flexx</StoreOption>

@@ -9,7 +9,7 @@ const DailyQuestionsCheck = () => {
   const [dailyQuestions, setDailyQuestions] = useState(null)
   const checkDailyQuestionsDone = async () => {
     try {
-      const todaysAnsweredQuestionsResponse = userAnswerService.getTodaysAnswers();
+      const todaysAnsweredQuestionsResponse = await userAnswerService.getTodaysAnswers();
       console.log(todaysAnsweredQuestionsResponse)
       setDailyQuestions(todaysAnsweredQuestionsResponse);
     } catch (error) {
@@ -23,7 +23,7 @@ const DailyQuestionsCheck = () => {
 
   return (
     <div className="main-question-wrapper">
-      {dailyQuestions < 7 ? <MainQuestions/> : <MainQuestionsDailyDone/>}
+      {dailyQuestions < 10 ? <MainQuestions/> : <MainQuestionsDailyDone/>}
     </div>
   )
 };

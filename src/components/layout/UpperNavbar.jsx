@@ -1,11 +1,11 @@
 import React from "react";
-import {RiInboxFill, RiInboxLine} from 'react-icons/ri';
+import NotificationIcon from "../visual/NotificationsIcon";
 import Money from "../visual/Money";
 import { useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import userService from "../../services/userService";
 
-const UpperNavbar = ({gems}) => {
+const UpperNavbar = ({notifications, gems}) => {
   const [path, setPath] = useState('/');
   const location = useLocation();
 
@@ -17,7 +17,7 @@ const UpperNavbar = ({gems}) => {
     <nav className="upper-navbar navbar">
       <div className="upper-navbar-notification-div">
         <NavLink to="/notifications">
-          {path === "/notifications" ? (<RiInboxFill className="navbar-icon"/>) : (<RiInboxLine className="navbar-icon"/>)}
+          {path === "/notifications" ? (<NotificationIcon isActive={true} notifications={notifications} />) : (<NotificationIcon isActive={false} notifications={notifications} />)}
         </NavLink>
       </div>
       <div className="upper-navbar-title-div">
