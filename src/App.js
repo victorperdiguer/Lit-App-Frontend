@@ -10,7 +10,7 @@ import NotFound from './views/NotFound';
 import Signup from './views/auth/Signup';
 import Login from './views/auth/Login';
 //main views
-import MainCircle from './views/circles/MainCircle';
+import CircleControl from './views/circles/CircleControl';
 import MainQuestions from './views/questions/MainQuestions';
 import MainProfile from './views/profile/MainProfile';
 import MainNotifications from './views/notifications/MainNotifications';
@@ -26,7 +26,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/questions" element={<IsPrivate><MainQuestions /></IsPrivate>} />
-        <Route path="/circles" element={<IsPrivate><MainCircle /></IsPrivate>} />
+        <Route path="/circles" element={<IsPrivate><CircleControl /></IsPrivate>} />
         <Route path="/profile" element={<IsPrivate><MainProfile /></IsPrivate>} />
         <Route path="/notifications" element={<IsPrivate><MainNotifications /></IsPrivate>} />
         <Route path="/store" element={<IsPrivate><MainStore /></IsPrivate>} />

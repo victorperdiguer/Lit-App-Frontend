@@ -19,6 +19,9 @@ class QuestionService {
   getQuestionByID(questionId) {
     return this.api.get(`/single/${questionId}`).then(({data}) => data).catch(error => console.error(error));
   }
+  getQuestionsByCircleAndStatus = async (circleId, status) => {
+    return this.api.get(`/circle/${circleId}/status/${status}`).then(({data}) => data).catch(error => console.error(error));
+  }
   createQuestion(body) {
     return this.api.post('/create', body).then(({data}) => data).catch(error => console.error(error));
   }

@@ -8,7 +8,7 @@ import toast from 'react-hot-toast';
 import CircleForm from "../../components/circles/CircleForm";
 import CircleList from "../../components/circles/CircleList";
 
-const MainCircle = (props) => {
+const ExploreCircles = (props) => {
   const [gems, setGems] = useState(null);
   const [notifications, setNotifications] = useState(null);
   const [circleName, setCircleName] = useState("");
@@ -121,7 +121,7 @@ const MainCircle = (props) => {
   };
 
   return (
-    <Layout gems={gems} notifications={notifications}>
+    <div className="circle-main">
       <h1>circle main</h1>
       <CircleForm handleSubmit={handleSubmit} circleName={circleName} setCircleName={setCircleName} />
       <div className="search-container">
@@ -138,8 +138,8 @@ const MainCircle = (props) => {
         </select>
       </div>
       <CircleList filteredCircles={filteredCircles} userCircles={userCircles} handleJoinQuit={handleJoinQuit} />
-    </Layout>
+    </div>
   )
 };
 
-export default MainCircle;
+export default ExploreCircles;

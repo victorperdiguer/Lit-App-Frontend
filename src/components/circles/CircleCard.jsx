@@ -5,7 +5,6 @@ const CircleCard = ({ circle, userCircles, handleJoinQuit }) => {
   return (
     <div className="circle-card">
       <h3>{circle.name}</h3>
-      <p>Admins: {circle.admins.length}</p>
       {isUserMember ? (
         <button onClick={() => handleJoinQuit(circle._id, "quit")}>Quit</button>
       ) : (
