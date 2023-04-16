@@ -13,19 +13,22 @@ class CircleService {
       return config;
     });
   }
+  getAll() {
+    return this.api.get('/all').then(({data}) => data).catch(error => console.error(error));
+  }
   getMyCircles() {
-    return this.api.get('/').then(({data}) => data).catch(error => console.error(error));
+    return this.api.get('/me').then(({data}) => data).catch(error => console.error(error));
   }
   getCircleAdmins(circleId) {
-    return this.api.get(`/admins/${circleId}`, body).then(({data}) => data).catch(error => console.error(error));
+    return this.api.get(`/admins/${circleId}`).then(({data}) => data).catch(error => console.error(error));
   }
   createCircle(body) {
     return this.api.post(`/create`, body).then(({data}) => data).catch(error => console.error(error));
   }
-  deleteUserFromCircle(circleId) {
+  removeUser(circleId) {
     return this.api.delete(`/exit/${circleId}`).then(({data}) => data).catch(error => console.error(error));
   }
-  joinCircle(circleId) {
+  join(circleId) {
     return this.api.put(`/join/${circleId}`).then(({data}) => data).catch(error => console.error(error));
   }
 }

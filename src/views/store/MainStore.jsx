@@ -13,7 +13,8 @@ const MainStore = () => {
 
   const getNotifications = async () => {
     try {
-      const response = notificationService.getNew();
+      const response = await notificationService.getNew();
+      console.log(response);
       response.length !== 0 ? setNotifications(true) : setNotifications(false);
     } catch (error) {
       console.error(error)
