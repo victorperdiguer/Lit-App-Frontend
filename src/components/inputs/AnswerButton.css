@@ -1,3 +1,23 @@
 .answer-button {
-  
+  font-family: 'Futura Round Bold';
+  display:block;
+  border-style:none;
+  border-radius:10px;
+  width: 40vmin;
+  height: 15vmin;
+  color:white;
+  font-size:1.1rem;
+  box-shadow: 3px 3px 3px 0px var(--primary-black);
+}
+
+.button-other {
+  background:linear-gradient(rgb(100,100,100), rgb(125, 125, 125));
+}
+
+.button-male {
+  background:linear-gradient(rgb(0, 155, 200), rgb(0, 180, 225));
+}
+
+.button-female {
+  background:linear-gradient(rgb(220, 0, 150), rgb(245, 0, 175));
 }

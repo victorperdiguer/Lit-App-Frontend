@@ -10,7 +10,7 @@ import userService from "../../services/userService";
 import notificationService from "../../services/notificationService";
 import toast from 'react-hot-toast';
 import QuestionsSubmit from "./QuestionsSubmit";
-import { CircleLoader } from "react-spinners";
+import ProgressBar from "../../components/visual/ProgressBar";
 
 const MainQuestions = (props) => {
   const [dailyQuestionsAnswered, setDailyQuestionsAnswered] = useState(null);
@@ -18,7 +18,6 @@ const MainQuestions = (props) => {
   const [answers, setAnswers] = useState([]);
   const [gems, setGems] = useState(null);
   const [notifications, setNotifications] = useState(null);
-  const [loading, setLoading] = useState(false);
 
   const getNotifications = async () => {
     try {
@@ -104,10 +103,14 @@ const MainQuestions = (props) => {
 
   return (
     <Layout gems={gems} notifications={notifications}>
-      {dailyQuestionsAnswered <= 10 ? (<div className="main-questions-view">
-        <h1>questions main</h1>
-        <h3 className="daily-questions">{dailyQuestionsAnswered}/10</h3>
-        <h2 className="question">{question ? question[0].question : null}</h2>
+      <ProgressBar steps={dailyQuestionsAnswered}/>
+      <h3 className="daily-questions">{dailyQuestionsAnswered}/10</h3>
+      {dailyQuestionsAnswered < 10 ? (<div className="main-questions-view">
+        {question && <div className="question-container">
+        <h2 className="question-emoji">{question[0].hasOwnProperty('emoji') ? question[0].emoji : '😳'}</h2>
+        <h2 className="question">{question[0].question}</h2>
+        </div>}
+        <div className="answers-container">
         {answers.map((answer, index) => (
             <AnswerButton
               key={index}
@@ -118,9 +121,14 @@ const MainQuestions = (props) => {
               onClick={handleAnswer}
             />
         ))}
+        </div>
         <div className="extra-button-container">
+          <div className="extra-button-wrapper">
             <button value="shuffle" type="submit" className="shuffle-button extra-answer-button" onClick={handleShuffle}><RiShuffleFill/></button>
+          </div>
+          <div className="extra-button-wrapper">
             <button value="skip" type="submit" className="skip-button extra-answer-button" onClick={handleSkip}><RiSkipForwardFill/></button>
+            </div>
         </div>
       </div>) : <QuestionsSubmit />}
     </Layout>

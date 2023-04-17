@@ -1,0 +1,19 @@
+.progress-bar {
+  display:flex;
+  flex-direction:row;
+  gap: 2vw;
+  justify-content: center;
+  align-items: center;
+}
+
+.progress-step-fill {
+  height:2vw;
+  width:6vw;
+  background-color: black;
+}
+
+.progress-step-empty {
+  height:2vw;
+  width:6vw;
+  background-color: silver;
+}

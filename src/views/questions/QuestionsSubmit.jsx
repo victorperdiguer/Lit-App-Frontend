@@ -6,6 +6,7 @@ import circleService from "../../services/circleService";
 import categoriesService from "../../services/categoriesService";
 import questionService from "../../services/questionService";
 import toast from 'react-hot-toast';
+import "./QuestionsSubmit.css"
 
 const QuestionsSubmit = () => {
   const [gems, setGems] = useState(null);
@@ -102,10 +103,14 @@ const QuestionsSubmit = () => {
 
   return (
     <div className="submit-question-container">
-      <form onSubmit={handleSubmit}>
-        <h2>Submit a Question</h2>
+      <form onSubmit={handleSubmit} className="submit-question-form">
+      <div className="daily-questions-done-text">
+        <h2 className="title">Come back tomorrow for more!</h2>
+        <h2 className="emoji">👀</h2>
+        <p>Meanwhile, why not submit a new question?</p>
+      </div>
 
-        <label htmlFor="selectedCircle">Circle:</label>
+        <label htmlFor="selectedCircle">Circle</label>
         <select
           id="selectedCircle"
           name="selectedCircle"
@@ -119,47 +124,51 @@ const QuestionsSubmit = () => {
             </option>
           ))}
         </select>
-
-        <label htmlFor="positiveCategories">Positive Categories:</label>
-        <select
-          id="positiveCategories"
-          name="positiveCategories"
-          multiple
-          value={formFields.positiveCategories}
-          onChange={handleMultiSelectChange}
-        >
-          {categories.map((category) => (
-            <option key={category._id} value={category._id}>
-              {category.name}
-            </option>
-          ))}
-        </select>
-
-        <label htmlFor="negativeCategories">Negative Categories:</label>
-        <select
-          id="negativeCategories"
-          name="negativeCategories"
-          multiple
-          value={formFields.negativeCategories}
-          onChange={handleMultiSelectChange}
-        >
-          {categories.map((category) => (
-            <option key={category._id} value={category._id}>
-              {category.name}
-            </option>
-          ))}
-        </select>
-
-        <label htmlFor="emoji">Emoji:</label>
+        <div className="categories">
+          <div className="category-container">
+            <h4>Positive Categories</h4>
+            <select
+              id="positiveCategories"
+              name="positiveCategories"
+              multiple
+              value={formFields.positiveCategories}
+              onChange={handleMultiSelectChange}
+            >
+              {categories.map((category) => (
+                <option key={category._id} value={category._id}>
+                  {category.name}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="category-container">
+            <h4>Negative Categories</h4>
+            <select
+              id="negativeCategories"
+              name="negativeCategories"
+              multiple
+              value={formFields.negativeCategories}
+              onChange={handleMultiSelectChange}
+            >
+              {categories.map((category) => (
+                <option key={category._id} value={category._id}>
+                  {category.name}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+        <label>Emoji</label>
         <input
           type="text"
           id="emoji"
           name="emoji"
           value={formFields.emoji}
           onChange={handleChange}
+          className="emoji-input"
         />
 
-        <label htmlFor="questionText">Question:</label>
+        <label htmlFor="questionText">Question</label>
         <textarea
           id="questionText"
           name="questionText"
