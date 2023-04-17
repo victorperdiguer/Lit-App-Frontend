@@ -25,6 +25,9 @@ class CircleService {
   getCircleAdmins(circleId) {
     return this.api.get(`/admins/${circleId}`).then(({data}) => data).catch(error => console.error(error));
   }
+  getCircleUsers(circleId) {
+    return this.api.get(`/users/${circleId}`).then(({data}) => data).catch(error => console.error(error));
+  }
   createCircle(body) {
     return this.api.post(`/create`, body).then(({data}) => data).catch(error => console.error(error));
   }

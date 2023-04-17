@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from "react";
 import questionService from "../../services/questionService";
 import circleService from "../../services/circleService";
+import QuestionCard from "../../components/visual/QuestionCard";
+import MemberCard from "../../components/visual/MemberCard";
 
 const AdminCircle = () => {
   const [adminCircles, setAdminCircles] = useState([]);
   const [selectedCircle, setSelectedCircle] = useState("");
   const [questions, setQuestions] = useState([]);
+  const [members, setMembers] = useState([]);
   const [questionFilter, setQuestionFilter] = useState("pending");
+  const [view, setView] = useState("");
 
   // Fetch the circles that the user is an admin of
   const getCircles = async () => {
@@ -18,9 +22,26 @@ const AdminCircle = () => {
     }
   };
 
+  const getMembers = async () => {
+    if (selectedCircle) {
+      try {
+        const response = await circleService.getCircleUsers(selectedCircle);
+        setMembers(response);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  };
+
   useEffect(() => {
     getCircles();
   }, []);
+
+  useEffect(() => {
+    if (view === "members") {
+      getMembers();
+    }
+  }, [selectedCircle, view]);
 
   // Fetch questions for the selected circle based on the selected filter
   const fetchQuestions = async () => {
@@ -64,7 +85,7 @@ const AdminCircle = () => {
   const renderQuestions = () => {
     return questions.map((question) => (
       <div key={question._id}>
-        <p>{question.text}</p>
+        <p>{question.question}</p>
         {questionFilter !== "approved" && (
           <button onClick={() => handleApproveQuestion(question._id)}>
             Approve
@@ -79,29 +100,62 @@ const AdminCircle = () => {
     ));
   };
 
-  const handleApproveQuestion = (questionId) => {
-    // Approve question using questionService.validateQuestion
-    // Update the questions state after approving the question
+  // Render a list of members for the selected circle
+  const renderMembers = () => {
+    return members.map((member) => (
+      <MemberCard key={member._id} member={member} handleKick={handleKickMember} />
+    ));
   };
 
-  const handleRejectQuestion = (questionId) => {
+  const handleKickMember = (memberId) => {
+    // Kick member using circleService
+    // Update the members state after kicking the member
+  };
+
+  const handleApproveQuestion = async (questionId) => {
+    // Approve question using questionService.validateQuestion
+    try {
+      await questionService.validateQuestion(questionId, {newStatus: 'approved'});
+      fetchQuestions();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleRejectQuestion = async (questionId) => {
     // Reject question using questionService.validateQuestion
-    // Update the questions state after rejecting the question
+    try {
+      await questionService.validateQuestion(questionId, {newStatus: 'rejected'});
+      fetchQuestions();
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
     <div>
       <h2>Admin Circle Management</h2>
       {renderAdminCircles()}
-      <select
-        value={questionFilter}
-        onChange={(e) => setQuestionFilter(e.target.value)}
-      >
-        <option value="pending">Pending</option>
-        <option value="approved">Approved</option>
-        <option value="rejected">Rejected</option>
-      </select>
-      {renderQuestions()}
+      {selectedCircle && (
+        <>
+          <button onClick={() => setView("questions")}>Questions</button>
+          <button onClick={() => setView("members")}>Members</button>
+        </>
+      )}
+      {view === "questions" && (
+        <>
+          <select
+            value={questionFilter}
+            onChange={(e) => setQuestionFilter(e.target.value)}
+          >
+            <option value="pending">Pending</option>
+            <option value="approved">Approved</option>
+            <option value="rejected">Rejected</option>
+          </select>
+          {renderQuestions()}
+        </>
+      )}
+      {view === "members" && renderMembers()}
     </div>
   );
 };

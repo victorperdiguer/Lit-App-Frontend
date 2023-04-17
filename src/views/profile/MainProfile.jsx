@@ -24,7 +24,7 @@ const MainProfile = (props) => {
 
   const getNotifications = async () => {
     try {
-      const response = notificationService.getNew();
+      const response = await notificationService.getNew();
       response.length !== 0 ? setNotifications(true) : setNotifications(false);
     } catch (error) {
       console.error(error)
@@ -76,8 +76,8 @@ const MainProfile = (props) => {
   };
 
   useEffect(() => {
-    getNotifications();
     getUser();
+    getNotifications();
   }, [])
 
   return (

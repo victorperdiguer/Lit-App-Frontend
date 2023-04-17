@@ -11,9 +11,8 @@ const MainNotifications = (props) => {
 
   const getNotifications = async () => {
     try {
-      const response = await notificationService.getLast2Days();
-      console.log(response);
-      setNotifications(response);
+      const response = await notificationService.getNew();
+      response.length !== 0 ? setNotifications(true) : setNotifications(false);
     } catch (error) {
       console.error(error)
     }

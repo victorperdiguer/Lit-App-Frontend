@@ -1,6 +1,5 @@
 import React from "react";
 import {useState, useEffect} from 'react';
-import Layout from "../../components/layout/Layout";
 import userService from "../../services/userService";
 import notificationService from "../../services/notificationService";
 import circleService from "../../services/circleService";
@@ -18,6 +17,7 @@ const ExploreCircles = (props) => {
   const [searchValue, setSearchValue] = useState("");
   const [displayMode, setDisplayMode] = useState("all");
   const [filteredCircles, setFilteredCircles] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const getNotifications = async () => {
     try {
