@@ -57,3 +57,22 @@ html, body {
 
 /* GENERAL STYLES */
 
+@keyframes changeBackground {
+  0% {
+    background-color: rgba(255, 84, 153, 0.527);
+  }
+  33% {
+    background-color: rgb(248, 108, 108);
+  }
+  66% {
+    background-color: rgb(69, 248, 174);
+  }
+  100% {
+    background-color: rgb(243, 240, 91);
+  }
+}
+
+
+body {
+  animation: changeBackground 120s linear infinite;
+}

@@ -6,6 +6,7 @@ const CircleQuestionCard = ({ question, questionFilter, handleApproveQuestion, h
   return (
     <div className="admin-review-questions">
       <p>{question.question}</p>
+      <div>
       {questionFilter !== "approved" && (
         <button className="button-approve" onClick={() => handleApproveQuestion(question._id)}>
           Approve
@@ -16,6 +17,7 @@ const CircleQuestionCard = ({ question, questionFilter, handleApproveQuestion, h
           Reject
         </button>
       )}
+    </div>
     </div>
   );
 };

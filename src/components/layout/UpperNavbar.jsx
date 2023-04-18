@@ -21,7 +21,7 @@ const UpperNavbar = ({notifications, gems}) => {
         </NavLink>
       </div>
       <div className="upper-navbar-title-div">
-        <h1 className="navbar-icon">Lit</h1>
+        <a href="/"><h1 className="navbar-icon lit-title" >LIT</h1></a>
       </div>
         <NavLink to="/store">
           {path === "/store" ? (<Money gems={gems} isActive={true}/>) : (<Money gems={gems} isActive={false}/>)}

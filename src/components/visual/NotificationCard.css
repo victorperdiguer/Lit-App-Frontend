@@ -4,12 +4,14 @@
   justify-content: space-between;
   align-items: center;
   gap:1px;
-  font-family:'Futura Round Bold'
+  font-family:'Futura Round Bold';
+  background-color:rgba(250,250,250,0.8);
+  border-radius: 5px;
 }
 
 .notification-card {
   border-top:silver 1px solid;
-  padding: 5px 0;
+  padding: 5px 5px;
 }
 
 .notification-card > h2 {

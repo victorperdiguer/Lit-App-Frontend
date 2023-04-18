@@ -12,6 +12,7 @@ import { FaInstagram } from "react-icons/fa";
 
 
 
+
 const MainProfile = (props) => {
   const [formData, setFormData] = useState({
     name: "",

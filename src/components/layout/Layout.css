@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bowlby+One+SC&family=Comfortaa:wght@300;400;500;600;700&display=swap');
+
 .navbar {
   box-sizing: border-box;
   flex-shrink:0;
@@ -7,18 +9,11 @@
   flex-direction:row;
   justify-content: center;
   gap:25vw;
-  background-color: #FFF9A5;
 }
 
 .upper-navbar {
   top: 0;
-  border-bottom: 2px solid black;
   padding:15px 25px 5px 25px;
-}
-
-.upper-navbar-title-div > h1 {
-  font-family: "Futura Round Demi Italic";
-  color:white;
 }
 
 .bottom-navbar {
@@ -26,6 +21,7 @@
   align-items:baseline;
   border-top: 2px solid black;
   padding:5px 25px 15px 25px;
+  background-color:antiquewhite;
 }
 
 .navbar-icon {
@@ -55,5 +51,32 @@ a.active {
 }
 
 a {
-  color: rgb(61, 61, 61);
+  color: rgb(100, 100, 100);
 }
+
+:root {
+  --br: 15px;
+  --primary-black: black;
+  --primary-orange: #FF8A5B;
+  --secondary-orange:#FFA783;
+  --primary-yellow: #ffe066;
+  --secondary-yellow: #FFD326;
+  --primary-blue: #2be8eb;
+  --secondary-blue: #23C2C4;
+  --primary-pink:#f56882;
+  --secondary-pink:rgba(251, 130, 152, 1);
+  --basic-white: #fff;
+  --profile-grey:#EBEAEA;
+  --profile-lightgrey:#F6F6F6;
+}
+
+.lit-title {
+  font-family: 'Bowlby One SC';
+  font-size:2.4rem;
+  background: -webkit-linear-gradient(var(--primary-pink), var(--primary-yellow));
+  -webkit-background-clip: text;
+  -webkit-text-stroke:1px black;
+  -webkit-text-fill-color: transparent;
+  text-align:center;
+}
+
