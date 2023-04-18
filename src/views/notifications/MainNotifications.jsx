@@ -43,6 +43,7 @@ const MainNotifications = (props) => {
   useEffect(() => {
     getGems();
     getNotifications();
+    getNotificationCards();
   }, [])
 
   return (

@@ -1,0 +1,73 @@
+.notification-card, .hidden-notification {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap:1px;
+  font-family:'Futura Round Bold'
+}
+
+.notification-card {
+  border-top:silver 1px solid;
+  padding: 5px 0;
+}
+
+.notification-card > h2 {
+  font-size: 1.2rem;
+}
+
+.hidden-notification {
+  justify-content: center;
+  align-items: center;
+  gap:5vw;
+  padding: 5px 0;
+}
+
+.hidden-emoji {
+  font-size:2rem;
+  padding: 0;
+}
+
+.hidden-question {
+  font-size:1rem;
+  padding: 0;
+  text-align: justify;
+}
+
+.notification-card-wrapper {
+  padding: 1vh 0;
+}
+
+.icon-and-timestamp {
+  font-size:2rem;
+  text-align: center;
+}
+
+.notification-card-date {
+  font-size: 0.7rem;
+  color:silver;
+  font-family: 'Futura Round Demi Italic';
+}
+
+.color-male {
+  color:rgb(0, 155, 200);
+}
+
+.color-female {
+  color:rgb(220, 0, 150);
+}
+
+.color-other {
+  color:rgb(100, 100, 100);
+}
+
+.notification-discover-what-button {
+  text-align:center;
+  border-radius:5px;
+  border-style:none;
+  background:linear-gradient(black, rgb(70, 70, 70));
+  border-radius:5px;
+  font-family:'Futura Round Demi Italic';
+  color:white;
+  font-size:1.2rem;
+}
