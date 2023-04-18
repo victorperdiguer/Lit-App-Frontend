@@ -4,15 +4,28 @@ import { useEffect, useState } from "react";
 import userService from "../../services/userService";
 import notificationService from "../../services/notificationService";
 import NotificationCard from "../../components/visual/NotificationCard";
+import "./MainNotifications.css";
 
 const MainNotifications = (props) => {
   const [gems, setGems] = useState(null);
-  const [notifications, setNotifications] = useState([]);
+  const [notifications, setNotifications] = useState(null);
+  const [notificationCards, setNotificationCards] = useState([])
 
   const getNotifications = async () => {
     try {
       const response = await notificationService.getNew();
       response.length !== 0 ? setNotifications(true) : setNotifications(false);
+      console.log(notifications);
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  const getNotificationCards = async () => {
+    try {
+      const response = await notificationService.getLast2Days();
+      console.log(response);
+      setNotificationCards(response);
     } catch (error) {
       console.error(error)
     }
@@ -34,8 +47,8 @@ const MainNotifications = (props) => {
 
   return (
     <Layout gems={gems} notifications={notifications}>
-      {notifications && <div className="notifications-view">
-        {notifications.map((notification, index) => {
+      {notificationCards && notificationCards.length != 0 ? (<div className="notifications-view">
+        {notificationCards.map((notification, index) => {
           return (
             <NotificationCard
               key={index}
@@ -50,7 +63,7 @@ const MainNotifications = (props) => {
               />
           )
         })}
-      </div>}
+      </div>) : <img src="https://media.tenor.com/RZz6d7d4DAoAAAAC/desert-tumble-weed.gif" className="tumbling-weed"/>}
     </Layout>
   )
 };

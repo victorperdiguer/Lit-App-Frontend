@@ -4,6 +4,7 @@ import MainCircle from "./MainCircle";
 import AdminCircle from "./AdminCircle";
 import userService from "../../services/userService";
 import notificationService from "../../services/notificationService";
+import "./Circle.css";
 
 const CircleControl = () => {
   const [view, setView] = useState("circles");
@@ -14,7 +15,6 @@ const CircleControl = () => {
   const getNotifications = async () => {
     try {
       const response = await notificationService.getNew();
-      console.log(response);
       response.length !== 0 ? setNotifications(true) : setNotifications(false);
     } catch (error) {
       console.error(error)
@@ -37,7 +37,7 @@ const CircleControl = () => {
 
   return (
     <Layout gems={gems} notifications={notifications}>
-      <div>
+      <div className="circle-control">
         <button onClick={() => setView("circles")}>Circles</button>
         <button onClick={() => setView("manageMyOwn")}>Manage my own</button>
       </div>

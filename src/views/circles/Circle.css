@@ -1,0 +1,80 @@
+.circle-control > button {
+  width: 40vw;
+  height: 4vh;
+  text-align:center;
+  border-radius:5px;
+  border-style:none;
+  background:linear-gradient(black, rgb(70, 70, 70));
+  border-radius:5px;
+  font-family:'Futura Round Demi Italic';
+  color:white;
+  font-size:1rem;
+}
+
+.circle-control {
+  display:flex;
+  flex-direction:row;
+  justify-content: space-around;
+  align-items: center;
+  padding-bottom: 2vh;
+}
+
+.search-container {
+  padding: 2vh 0 0 0;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.search-container input, .search-container select, .admin-circle-select {
+    font-family:inherit;
+    padding: 2px 1vw;
+    background-color: #FFF9A5;
+    border-radius: 5px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-width:0;
+    border-bottom:silver 2px solid;
+}
+
+.admin-circle-container {
+  padding: 2vh 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.admin-circle-button {
+  width: 25vw;
+  height: 3vh;
+  text-align:center;
+  border-radius:5px;
+  border-style:none;
+  background:linear-gradient(black, rgb(70, 70, 70));
+  border-radius:5px;
+  font-family:'Futura Round Demi Italic';
+  color:white;
+  font-size:1rem;
+}
+
+.button-reject {
+  border-radius:5px;
+  width:15vw;
+  height: 3vh;
+  background:linear-gradient(rgb(150, 0, 0), red);
+  color:white;
+  border-style:none;
+}
+
+.button-approve {
+  border-radius:5px;
+  width:15vw;
+  height: 3vh;
+  background: linear-gradient(rgb(0, 60, 0), rgb(0, 140, 0));
+  color:white;
+  border-style:none;
+}
+
+.admin-review-questions {
+  
+}

@@ -1,5 +1,6 @@
 import React from "react";
 import CircleCard from "./CircleCard";
+import "./CircleComponents.css";
 
 const CircleList = ({filteredCircles, userCircles, handleJoinQuit}) => {
   return (

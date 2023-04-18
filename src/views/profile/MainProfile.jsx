@@ -4,6 +4,12 @@ import Layout from "../../components/layout/Layout";
 import userService from "../../services/userService";
 import notificationService from "../../services/notificationService";
 import toast from 'react-hot-toast';
+import "./MainProfile.css";
+import { FaSnapchat, FaTiktok } from "react-icons/fa";
+import { FaSnapchatGhost } from "react-icons/fa";
+import { FaFacebookF } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
+
 
 
 const MainProfile = (props) => {
@@ -15,6 +21,7 @@ const MainProfile = (props) => {
     instagram: "",
     tiktok: "",
     snapchat: "",
+    facebook: "",
     dateOfBirth: "",
     safeMode: ""
   });
@@ -83,110 +90,126 @@ const MainProfile = (props) => {
   return (
     <Layout gems={gems} notifications={notifications}>
       {user && <div className="user-profile">
-        <h1>Profile</h1>
-        <form onSubmit={handleSubmit}>
-          <label>
-            Name:
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleInputChange}
-            />
-          </label>
-          <label>
-            Surname:
-            <input
-              type="text"
-              name="surname"
-              value={formData.surname}
-              onChange={handleInputChange}
-            />
-          </label>
-          <label>
-            Phone:
-            <input
-              type="text"
-              name="phone"
-              value={formData.phone}
-              onChange={handleInputChange}
-              pattern="^\+[0-9]+$"
-              title="Phone can only contain numbers and must be preceeded by a + sign"
-            />
-          </label>
-          <label>
-          Gender:
-          <div>
+        <form onSubmit={handleSubmit} className="profile-form">
+        <div className="user-data">
+          <div className="text-info">
             <label>
+              Name
               <input
-                type="radio"
-                name="gender"
-                value="male"
-                checked={formData.gender === "male"}
+                type="text"
+                name="name"
+                value={formData.name}
                 onChange={handleInputChange}
               />
-              Male
             </label>
             <label>
+              Surname
               <input
-                type="radio"
-                name="gender"
-                value="female"
-                checked={formData.gender === "female"}
+                type="text"
+                name="surname"
+                value={formData.surname}
                 onChange={handleInputChange}
               />
-              Female
             </label>
             <label>
+              Phone
               <input
-                type="radio"
-                name="gender"
-                value="other"
-                checked={formData.gender === "other"}
+                type="text"
+                name="phone"
+                value={formData.phone}
                 onChange={handleInputChange}
+                pattern="^\+[0-9]+$"
+                title="Phone can only contain numbers and must be preceeded by a + sign"
               />
-              Other
             </label>
           </div>
-        </label>
-          <label>
-            Instagram:
-            <input
-              type="text"
-              name="instagram"
-              value={formData.instagram}
-              onChange={handleInputChange}
-            />
+          <div className="gender-dob">
+            <label className="gender-label">
+            Gender
+            <div className="gender-radio">
+              <label>
+                <input
+                  type="radio"
+                  name="gender"
+                  value="male"
+                  checked={formData.gender === "male"}
+                  onChange={handleInputChange}
+                />
+                Male
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  name="gender"
+                  value="female"
+                  checked={formData.gender === "female"}
+                  onChange={handleInputChange}
+                />
+                Female
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  name="gender"
+                  value="other"
+                  checked={formData.gender === "other"}
+                  onChange={handleInputChange}
+                />
+                Other
+              </label>
+            </div>
           </label>
           <label>
-            TikTok:
-            <input
-              type="text"
-              name="tiktok"
-              value={formData.tiktok}
-              onChange={handleInputChange}
-            />
-          </label>
+              Date of Birth
+              <input
+                type="date"
+                name="dateOfBirth"
+                value={formData.dateOfBirth || ""} // use an empty string if dateOfBirth is null
+                onChange={handleInputChange}
+              />
+            </label>
+            </div>
+          </div>
+          <div className="social-media">
+            <label>
+              <FaInstagram/>
+              <input
+                type="text"
+                name="instagram"
+                value={formData.instagram}
+                onChange={handleInputChange}
+              />
+            </label>
+            <label>
+              <FaTiktok/>
+              <input
+                type="text"
+                name="tiktok"
+                value={formData.tiktok}
+                onChange={handleInputChange}
+              />
+            </label>
+            <label>
+              <FaSnapchat/>
+              <input
+                type="text"
+                name="snapchat"
+                value={formData.snapchat}
+                onChange={handleInputChange}
+              />
+            </label>
+            <label>
+              <FaFacebookF/>
+              <input
+                type="text"
+                name="facebook"
+                value={formData.facebook}
+                onChange={handleInputChange}
+              />
+            </label>
+          </div>
           <label>
-            Snapchat:
-            <input
-              type="text"
-              name="snapchat"
-              value={formData.snapchat}
-              onChange={handleInputChange}
-            />
-          </label>
-          <label>
-            Date of Birth:
-            <input
-              type="date"
-              name="dateOfBirth"
-              value={formData.dateOfBirth || ""} // use an empty string if dateOfBirth is null
-              onChange={handleInputChange}
-            />
-          </label>
-          <label>
-            Safe Mode:
+            Safe Mode
             <input
               type="checkbox"
               name="safeMode"

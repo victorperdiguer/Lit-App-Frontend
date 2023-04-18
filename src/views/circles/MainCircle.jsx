@@ -6,6 +6,8 @@ import circleService from "../../services/circleService";
 import toast from 'react-hot-toast';
 import CircleForm from "../../components/circles/CircleForm";
 import CircleList from "../../components/circles/CircleList";
+import "./Circle.css";
+import CircleQuestionCard from "../../components/circles/CircleQuestionCard";
 
 const ExploreCircles = (props) => {
   const [gems, setGems] = useState(null);
@@ -122,8 +124,9 @@ const ExploreCircles = (props) => {
 
   return (
     <div className="circle-main">
-      <h1>circle main</h1>
+      <h1>Create a circle</h1>
       <CircleForm handleSubmit={handleSubmit} circleName={circleName} setCircleName={setCircleName} />
+      <h1>Find other circles</h1>
       <div className="search-container">
         <input
           type="text"

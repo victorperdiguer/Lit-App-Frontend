@@ -1,0 +1,78 @@
+.profile-form > button[type=submit] {
+  font-family:'Futura Round Bold';
+  margin: 0 auto;
+  width: 40vw;
+  height: 4vh;
+  border-radius: 5px;
+  font-size:1rem;
+  color:white;
+  border-style:none;
+  text-align:center;
+  background: linear-gradient(rgb(0, 60, 0), rgb(0, 140, 0));
+}
+
+.profile-form {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center;
+}
+
+.profile-form label {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.profile-form label input[type=text],
+.profile-form label div {
+  display: block;
+  margin-top: 0.5rem;
+}
+
+.profile-form input {
+  font-family:inherit;
+  padding: 2px 1vw;
+  background-color: #FFF9A5;
+  border-radius: 5px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-width:0;
+  border-bottom:silver 2px solid;
+}
+
+.social-media {
+  padding-top: 5vh;
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+  justify-content: space-around;
+}
+
+.user-data {
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 5vw;
+}
+
+.profile-form .gender-label {
+  margin: 0;
+}
+
+.gender-radio > label {
+  display:block;
+}
+
+.gender-dob {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  width: 40vw;
+}
+
+.profile-form button[type="submit"] {
+  position: absolute;
+  bottom: 20vh;
+}
+

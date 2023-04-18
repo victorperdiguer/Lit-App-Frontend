@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import questionService from "../../services/questionService";
 import circleService from "../../services/circleService";
-import QuestionCard from "../../components/visual/QuestionCard";
-import MemberCard from "../../components/visual/MemberCard";
+import CircleQuestionCard from "../../components/circles/CircleQuestionCard";
+import MemberCard from "../../components/circles/MemberCard";
+import "./Circle.css";
 
 const AdminCircle = () => {
   const [adminCircles, setAdminCircles] = useState([]);
@@ -66,6 +67,7 @@ const AdminCircle = () => {
   const renderAdminCircles = () => {
     return (
       <select
+        className="admin-circle-select"
         value={selectedCircle}
         onChange={(e) => setSelectedCircle(e.target.value)}
       >
@@ -84,19 +86,13 @@ const AdminCircle = () => {
   // Render a list of questions for the selected circle
   const renderQuestions = () => {
     return questions.map((question) => (
-      <div key={question._id}>
-        <p>{question.question}</p>
-        {questionFilter !== "approved" && (
-          <button onClick={() => handleApproveQuestion(question._id)}>
-            Approve
-          </button>
-        )}
-        {questionFilter !== "rejected" && (
-          <button onClick={() => handleRejectQuestion(question._id)}>
-            Reject
-          </button>
-        )}
-      </div>
+      <CircleQuestionCard
+        key={question._id}
+        question={question}
+        questionFilter={questionFilter}
+        handleApproveQuestion={handleApproveQuestion}
+        handleRejectQuestion={handleRejectQuestion}
+      />
     ));
   };
 
@@ -137,14 +133,15 @@ const AdminCircle = () => {
       <h2>Admin Circle Management</h2>
       {renderAdminCircles()}
       {selectedCircle && (
-        <>
-          <button onClick={() => setView("questions")}>Questions</button>
-          <button onClick={() => setView("members")}>Members</button>
-        </>
+        <div className="admin-circle-container">
+          <button className="admin-circle-button" onClick={() => setView("questions")}>Questions</button>
+          <button className="admin-circle-button" onClick={() => setView("members")}>Members</button>
+        </div>
       )}
       {view === "questions" && (
-        <>
+        <div className="admin-questions-view">
           <select
+            className="admin-circle-select"
             value={questionFilter}
             onChange={(e) => setQuestionFilter(e.target.value)}
           >
@@ -153,7 +150,7 @@ const AdminCircle = () => {
             <option value="rejected">Rejected</option>
           </select>
           {renderQuestions()}
-        </>
+        </div>
       )}
       {view === "members" && renderMembers()}
     </div>
