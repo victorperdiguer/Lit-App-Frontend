@@ -1,0 +1,57 @@
+.store {
+  height: 80vh;
+  display: flex;
+  flex-direction:column;
+  justify-content: space-around;
+  align-items: center;
+  text-align:center;
+}
+
+.store-container {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1vh;
+}
+
+.store-container > h2 {
+  font-size:1.2rem;
+}
+
+.store-gem-small {
+  font-size: 6rem;
+  color:white;
+  background:linear-gradient(rgb(0, 248, 194), rgb(0, 128, 49));
+  border-radius: 25%;
+  padding: 5px;
+}
+
+.store-gem-medium {
+  font-size: 6rem;
+  color:white;
+  background:linear-gradient(rgb(248, 203, 0), rgb(189, 186, 6));
+  border-radius: 25%;
+  padding: 5px;
+}
+
+.store-gem-big {
+  font-size: 6rem;
+  color:white;
+  background:linear-gradient(rgb(248, 0, 248), purple);
+  border-radius: 25%;
+  padding: 5px;
+}
+
+.purchase-button {
+  width: 25vw;
+  height: 3vh;
+  text-align:center;
+  border-radius:5px;
+  border-style:none;
+  background:linear-gradient(black, rgb(70, 70, 70));
+  border-radius:5px;
+  font-family:'Futura Round Demi Italic';
+  color:white;
+  font-size:1rem;
+}

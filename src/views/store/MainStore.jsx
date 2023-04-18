@@ -5,6 +5,7 @@ import userService from "../../services/userService";
 import notificationService from "../../services/notificationService";
 import StoreOption from "../../components/visual/StoreOptions";
 import toast from "react-hot-toast";
+import "./MainStore.css";
 
 const MainStore = () => {
   const [gems, setGems] = useState(null);
@@ -53,7 +54,6 @@ const MainStore = () => {
 
   return (
     <Layout gems={gems} notifications={notifications}>
-      <h1>main store</h1>
       <div className="store">
         <StoreOption amount={50} price={"3.99 €"} size="small" onClick={handlePayment}>Flexx</StoreOption>
         <StoreOption amount={250} price={"3.49 €"} size="medium" onClick={handlePayment}>Bling Bling</StoreOption>

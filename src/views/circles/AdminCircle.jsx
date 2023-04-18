@@ -130,7 +130,7 @@ const AdminCircle = () => {
 
   return (
     <div>
-      <h2>Admin Circle Management</h2>
+      <h2 className="admin-circle-title">Admin Circle Management</h2>
       {renderAdminCircles()}
       {selectedCircle && (
         <div className="admin-circle-container">
